@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useState } from "react";
+import { useRouter } from "expo-router";
 import {
   Avatar,
   Button,
@@ -22,6 +23,12 @@ export default function SettingsTab() {
   const [language, setLanguage] = useState<"en" | "bn">("en");
   const { colorScheme, setColorScheme } = useThemePreference();
   const darkMode = colorScheme === "dark";
+  const router = useRouter();
+
+  const handleLogout = () => {
+    // TODO: clear auth state / tokens when you wire up backend auth.
+    router.replace("/login");
+  };
 
   return (
     <ThemedView style={styles.root}>
@@ -144,6 +151,24 @@ export default function SettingsTab() {
             </View>
           </Card.Content>
         </Card>
+
+        <Card
+          mode="elevated"
+          style={[styles.card, { backgroundColor: theme.colors.surface }]}
+        >
+          <Card.Title title="Account" />
+          <Card.Content>
+            <Button
+              mode="contained"
+              onPress={handleLogout}
+              style={styles.logoutButton}
+              buttonColor={theme.colors.error}
+              textColor={theme.colors.onError}
+            >
+              Logout
+            </Button>
+          </Card.Content>
+        </Card>
       </ScrollView>
     </ThemedView>
   );
@@ -171,6 +196,10 @@ const styles = StyleSheet.create({
   updateButton: {
     marginTop: 8,
     alignSelf: "flex-end",
+  },
+  logoutButton: {
+    marginTop: 4,
+    borderRadius: 999,
   },
   row: {
     flexDirection: "row",

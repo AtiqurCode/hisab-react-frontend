@@ -39,6 +39,9 @@ function RootLayoutInner() {
           <View style={styles.appShell}>
             <Stack>
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="login" options={{ title: 'Login' }} />
+              <Stack.Screen name="register" options={{ title: 'Register' }} />
+              <Stack.Screen name="reset-password" options={{ title: 'Reset password' }} />
               <Stack.Screen name="calculator" options={{ title: 'Calculator' }} />
               <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
             </Stack>
