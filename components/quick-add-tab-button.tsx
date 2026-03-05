@@ -1,13 +1,11 @@
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { PlatformPressable } from '@react-navigation/elements';
 import React, { useState } from 'react';
-import { useTheme } from 'react-native-paper';
 
 import { SalePaymentForm, type SalePaymentType } from '@/components/sale-payment-form';
 import { addTransaction } from '@/lib/transactions-store';
 
 export function QuickAddTabButton(props: BottomTabBarButtonProps) {
-  const theme = useTheme();
   const [visible, setVisible] = useState(false);
   const [type, setType] = useState<SalePaymentType>('sale');
 
